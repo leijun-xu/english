@@ -1,0 +1,1 @@
+GET http://localhost:3000/api/v1/word-book?page=1&pageSize=12&word=&gk=false&zk=fasle&gre=false&toefl=false&ielts=false&cet6=false&cet4=false&ky=false
