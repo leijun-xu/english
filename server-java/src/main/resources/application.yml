@@ -1,0 +1,60 @@
+server:
+  port: ${SERVER_PORT:3000}
+  servlet:
+    context-path: /
+
+spring:
+  application:
+    name: english-server-java
+  config:
+    import: optional:file:../server/.env[.properties]
+  datasource:
+    url: ${JDBC_DATABASE_URL:jdbc:postgresql://localhost:5432/english}
+    username: ${DATABASE_USERNAME:postgres}
+    password: ${DATABASE_PASSWORD:postgres}
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        globally_quoted_identifiers: true
+        jdbc:
+          time_zone: UTC
+  servlet:
+    multipart:
+      max-file-size: 5MB
+      max-request-size: 5MB
+  jackson:
+    default-property-inclusion: always
+    serialization:
+      write-dates-as-timestamps: false
+
+springdoc:
+  swagger-ui:
+    path: /api/swagger
+  api-docs:
+    path: /api/swagger-json
+
+app:
+  jwt:
+    secret: ${SECRET_KEY:change-me-to-a-long-secret-key}
+    access-expiration: 10s
+    refresh-expiration: 7d
+  minio:
+    endpoint: ${MINIO_ENDPOINT:http://localhost}
+    port: ${MINIO_PORT:9000}
+    use-ssl: ${MINIO_USE_SSL:false}
+    access-key: ${MINIO_ACCESS_KEY:minioadmin}
+    secret-key: ${MINIO_SECRET_KEY:minioadmin}
+    bucket: ${MINIO_BUCKET:avatar}
+  alipay:
+    app-id: ${ALIPAY_APP_ID:}
+    gateway: ${ALIPAY_GATEWAY:https://openapi-sandbox.dl.alipaydev.com/gateway.do}
+    public-key: ${ALIPAY_PUBLIC_KEY:}
+    private-key: ${ALIPAY_PRIVATE_KEY:}
+    notify-url: ${ALIPAY_NOTIFY_URL:http://localhost:3000}
+  socket:
+    enabled: ${SOCKET_ENABLED:true}
+    host: ${SOCKET_HOST:0.0.0.0}
+    port: ${SOCKET_PORT:3002}
