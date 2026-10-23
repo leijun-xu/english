@@ -1,5 +1,5 @@
 import type { PerformanceDto,TrackerConfig } from '@en/common/tracker';
-import { report } from '@/report';
+import { report } from '../report';
 import { onINP, onCLS } from 'web-vitals'
 export const reportPerformance = async (visitorId: string,config: TrackerConfig) => {
     let url = config.baseUrl + config.performance.api

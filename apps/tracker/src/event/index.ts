@@ -1,5 +1,5 @@
 import type { EventDto, TrackerConfig } from '@en/common/tracker';
-import { report } from '@/report';
+import { report } from '../report';
 export const reportEvent = (visitorId: string,config: TrackerConfig) => {
     const ButtonName = 'BUTTON'
     const SpanName = 'SPAN'

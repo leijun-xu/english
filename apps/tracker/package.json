@@ -2,15 +2,10 @@
   "name": "@en/tracker",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index.ts",
   "type": "module",
   "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/tracker.js",
-      "require": "./dist/tracker.cjs",
-      "default": "./dist/tracker.js"
-    }
+    ".": "./index.ts"
   },
   "scripts": {
     "dev": "vite",

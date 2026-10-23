@@ -1,10 +1,10 @@
 import type { TrackerConfig } from '@en/common/tracker';
-import { getFingerprint } from '@/uv';
-import { reportEvent } from '@/event';
-import { reportError } from '@/error';
-import { reportPv } from '@/pv';
-import { reportPerformance } from '@/performance';
-import { reportFetch } from '@/report';
+import { getFingerprint } from './src/uv';
+import { reportEvent } from './src/event';
+import { reportError } from './src/error';
+import { reportPv } from './src/pv';
+import { reportPerformance } from './src/performance';
+import { reportFetch } from './src/report';
 export class Tracker {
     private config: TrackerConfig
     private visitorId: string | null = null
@@ -19,11 +19,12 @@ export class Tracker {
         //IIFE立即执行函数
         this.initPromise = (async () => {
             let config = this.config
-            this.visitorId = await getFingerprint(config)
-            reportEvent(this.visitorId, config) //事件上报目前没有visitorId先随便写一个
-            reportError(this.visitorId, config) //错误上报目前没有visitorId先随便写一个
-            reportPv(this.visitorId, config) //页面上报目前没有visitorId先随便写一个
-            reportPerformance(this.visitorId, config) //性能上报目前没有visitorId先随便写一个
+            const visitorId = await getFingerprint(config)
+            this.visitorId = visitorId
+            reportEvent(visitorId, config) //事件上报目前没有visitorId先随便写一个
+            reportError(visitorId, config) //错误上报目前没有visitorId先随便写一个
+            reportPv(visitorId, config) //页面上报目前没有visitorId先随便写一个
+            reportPerformance(visitorId, config) //性能上报目前没有visitorId先随便写一个
         })()
         return this.initPromise
     }

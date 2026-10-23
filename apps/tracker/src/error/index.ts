@@ -1,5 +1,5 @@
 import type { ErrorDto, TrackerConfig } from '@en/common/tracker';
-import { report } from '@/report';
+import { report } from '../report';
 export const reportError = (visitorId: string,config: TrackerConfig) => {
     //捕获全局js错误
     let url = config.baseUrl + config.error.api
@@ -8,7 +8,7 @@ export const reportError = (visitorId: string,config: TrackerConfig) => {
           visitorId,
           error:'js', //js错误
           message:e.message, //错误信息
-          stack:e.error.stack, //错误堆栈
+          stack:e.error instanceof Error ? e.error.stack || '' : '', //错误堆栈
           url:e.filename, //错误文件
        }
        report(url, body)
@@ -20,7 +20,7 @@ export const reportError = (visitorId: string,config: TrackerConfig) => {
             visitorId,
             error:'promise', //promise错误
             message:isError ? e.reason.message : JSON.stringify(e.reason),
-            stack:isError ? e.reason.stack : 'Promise Rejection',
+            stack:isError ? e.reason.stack || '' : 'Promise Rejection',
             url:window.location.href,
         }
         report(url, body)

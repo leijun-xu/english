@@ -1,0 +1,50 @@
+{
+  "expo": {
+    "name": "English App",
+    "slug": "english-app",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.english.learning",
+      "infoPlist": {
+        "NSSpeechRecognitionUsageDescription": "用于将语音转换为聊天输入",
+        "NSMicrophoneUsageDescription": "用于 AI 对话的语音输入",
+        "NSPhotoLibraryUsageDescription": "用于选择并上传个人头像"
+      }
+    },
+    "android": {
+      "package": "com.english.learning",
+      "permissions": [
+        "RECORD_AUDIO",
+        "POST_NOTIFICATIONS"
+      ],
+      "adaptiveIcon": {
+        "backgroundColor": "#E6F4FE",
+        "foregroundImage": "./assets/android-icon-foreground.png",
+        "backgroundImage": "./assets/android-icon-background.png",
+        "monochromeImage": "./assets/android-icon-monochrome.png"
+      },
+      "predictiveBackGestureEnabled": false
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      "expo-router",
+      "expo-image-picker",
+      "expo-notifications",
+      [
+        "expo-speech-recognition",
+        {
+          "microphonePermission": "允许 English App 使用麦克风进行语音输入",
+          "speechRecognitionPermission": "允许 English App 将语音转换为文字"
+        }
+      ],
+      "expo-status-bar"
+    ],
+    "scheme": "englishapp"
+  }
+}
