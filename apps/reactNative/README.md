@@ -13,10 +13,13 @@ LAN address of the computer running the backend:
 EXPO_PUBLIC_SERVER_URL=http://192.168.1.10:3000
 EXPO_PUBLIC_AI_URL=http://192.168.1.10:3001
 EXPO_PUBLIC_SOCKET_URL=http://192.168.1.10:3002
-EXPO_PUBLIC_UPLOAD_URL=http://192.168.1.10:9000/avatar
+EXPO_PUBLIC_UPLOAD_URL=http://192.168.1.10:9000
 ```
 
 iOS Simulator defaults to `localhost`; Android Emulator defaults to `10.0.2.2`.
+For the current online environment, API and AI requests use
+`http://120.26.245.143`, Socket.IO uses port `3000`, and uploaded assets use
+port `9000`.
 
 ## Run
 
